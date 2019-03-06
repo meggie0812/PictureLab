@@ -34,6 +34,18 @@ public class IntArrayWorker
    * method to reuturn the largest number
    * 
    */
+  public int getLargest()
+  {
+      int largest=0;
+      for(int[] i: matrix)
+      {
+          for(int j: i)
+          {
+              if(
+          }
+      }
+      return largest;
+  }
   
   /**
    * Method to return the total 
