@@ -11,6 +11,30 @@ public class IntArrayWorker
     matrix = theMatrix;
   }
   
+  /***
+   * method to reutrn the count of a specific number
+   * return the number of occurance of c
+   * 
+   */
+  public int getCount(int c)
+  {
+      int count=0;
+      for(int[] i: matrix)
+      {
+          for(int j: i)
+          {
+              if(j==c)
+                count++;
+          }   
+      }
+      return count;
+  }
+  
+  /**
+   * method to reuturn the largest number
+   * 
+   */
+  
   /**
    * Method to return the total 
    * @return the total of the values in the array
