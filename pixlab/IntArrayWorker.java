@@ -37,16 +37,41 @@ public class IntArrayWorker
   public int getLargest()
   {
       int largest=0;
+      
       for(int[] i: matrix)
       {
           for(int j: i)
           {
-              if(
+              if(j>largest)
+                largest= j;
           }
       }
       return largest;
   }
   
+  /**
+   * method to get colume total
+   * 
+   * 
+   */
+  public int getColTotal(int col)
+  {
+      int sum=0;
+      /*
+      for(int i=0; i<matrix.length; i++)
+      {
+          sum+=matrix[i][col];
+      }
+      */
+      
+      for(int[] row: matrix)
+      {
+          sum+=row[col];
+      }
+      return sum;
+  }
+    
+    
   /**
    * Method to return the total 
    * @return the total of the values in the array
