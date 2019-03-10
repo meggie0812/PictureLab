@@ -106,6 +106,17 @@ public class PictureTester
       beach.explore();
   }
   
+  /**
+   *method to test tofind fish
+   */
+  public static void testFixUnderwater()
+  {
+      Picture beach = new Picture("water.jpg");
+      
+      beach.fixUnderwater();
+      beach.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -113,13 +124,13 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();
-    ///testKeepOnlyBlue();
-    ///testKeepOnlyRed();
-    ///testKeepOnlyGreen();
-    ///testNegate();
-    //testGrayscale();
-    //testFixUnderwater();
+    //  testZeroBlue();
+    //  testKeepOnlyBlue();
+    //  testKeepOnlyRed();
+    //  testKeepOnlyGreen();
+    //  testNegate();
+    //  testGrayscale();
+    testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();

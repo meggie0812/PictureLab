@@ -162,17 +162,33 @@ public class Picture extends SimplePicture
       {
           for(Pixel p: rows)
           {
-              
-              
-              
-              /*
-               * working on grayscale!!!!!!
-               */
-              p.setRed(255-p.getRed());
-              p.setGreen(255-p.getGreen());
+              int gray=(p.getRed()+p.getBlue()+p.getGreen())/3;
+              p.setRed(gray);
+              p.setBlue(gray);
+              p.setGreen(gray);
           }
       }
   }
+  
+  /**
+   * method to make fish to be seen
+   */
+  /*
+  public void fixUnderwater()
+  {
+      Pixel[][] picture = this.getPixels2D();
+      for(int i=0; i<153; i++)
+      {
+          for(int j=150; j<478; j++)
+          {
+              if(j.getRed()<20)
+              {
+                  j.setRed(225);
+              }
+          }
+      }
+  }
+  */
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -299,7 +315,7 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("water.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
