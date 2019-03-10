@@ -173,7 +173,7 @@ public class Picture extends SimplePicture
   /**
    * method to make fish to be seen
    */
-  /*
+  
   public void fixUnderwater()
   {
       Pixel[][] picture = this.getPixels2D();
@@ -181,14 +181,15 @@ public class Picture extends SimplePicture
       {
           for(int j=150; j<478; j++)
           {
-              if(j.getRed()<20)
+              
+              if(picture[i][j].getRed()<23)
               {
-                  j.setRed(225);
+                  picture[i][j].setRed(225);
               }
           }
       }
   }
-  */
+  
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
