@@ -38,9 +38,27 @@ public class PictureTester
   /** Method to test mirror horizontal */
   public static void testMirrorHorizontal()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("redMotorcycle.jpg");
     caterpillar.explore();
     caterpillar.mirrorHorizontal();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirror horizontal bottom to top*/
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture caterpillar = new Picture("redMotorcycle.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontalBotToTop();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirror diagnose*/
+  public static void testMirrorDiagonal()
+  {
+    Picture caterpillar = new Picture("beach.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorDiagonal();
     caterpillar.explore();
   }
   
@@ -151,7 +169,9 @@ public class PictureTester
     //  testFixUnderwater();
     //  testMirrorVertical();
     //  testMirrorVerticalRightToLeft();
-    testMirrorHorizontal();
+    //  testMirrorHorizontal();
+    //  testMirrorHorizontalBotToTop();
+    testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
