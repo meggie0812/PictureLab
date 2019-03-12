@@ -274,15 +274,32 @@ public class Picture extends SimplePicture
     Pixel leftBotPixel = null;
     Pixel rightTopPixel = null;
     int height = pixels.length;
-    for (int row = 0; row < height; row++)
+    int width = pixels[0].length;
+    if(width>height)
     {
-      for (int col = 0; col < row; col++)
-      {
-        leftBotPixel = pixels[row][col];
-        rightTopPixel = pixels[col][row];
-        rightTopPixel.setColor(leftBotPixel.getColor());
-      }
-    } 
+        for (int row = 0; row < height; row++)
+        {
+          for (int col = 0; col < row; col++)
+          {
+            leftBotPixel = pixels[row][col];
+            rightTopPixel = pixels[col][row];
+            rightTopPixel.setColor(leftBotPixel.getColor());
+          }
+        } 
+    }
+    else if(height>width)
+    {
+        for (int row = 0; row < width; row++)
+        {
+          for (int col = 0; col < row; col++)
+          {
+            leftBotPixel = pixels[row][col];
+            rightTopPixel = pixels[col][row];
+            rightTopPixel.setColor(leftBotPixel.getColor());
+          }
+        } 
+    }
+    
   }
   
   /** Mirror just part of a picture of a temple */
@@ -305,6 +322,33 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+ 
+  /** Mirror just part of a picture of a temple */
+  public void mirrorArms()
+  {
+    int mirrorPoint = 170;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int count = 0;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 159; row < mirrorPoint; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 104; col < 169; col++)
+      {
+        /**
+         * 
+         * on this!!!
+         */
+        topPixel = pixels[row][col];      
+        bottomPixel = pixels[mirrorPoint + (mirrorPoint - row)]                       
+                         [col];
+        bottomPixel.setColor(topPixel.getColor());
       }
     }
   }
