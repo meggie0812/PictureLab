@@ -329,7 +329,8 @@ public class Picture extends SimplePicture
   /** Mirror just part of a picture of a temple */
   public void mirrorArms()
   {
-    int mirrorPoint = 170;
+    int mirrorPoint = 185;
+    int mirrorPointRight = 195;
     Pixel topPixel = null;
     Pixel bottomPixel = null;
     int count = 0;
@@ -341,16 +342,66 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 104; col < 169; col++)
       {
-        /**
-         * 
-         * on this!!!
-         */
         topPixel = pixels[row][col];      
-        bottomPixel = pixels[mirrorPoint + (mirrorPoint - row)]                       
+        bottomPixel = pixels[mirrorPoint + mirrorPoint - row]                       
                          [col];
         bottomPixel.setColor(topPixel.getColor());
       }
     }
+    
+    for (int row = 171; row < mirrorPointRight; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 238; col < 293; col++)
+      {
+        topPixel = pixels[row][col];      
+        bottomPixel = pixels[mirrorPointRight + mirrorPointRight - row]                       
+                         [col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorGull()
+  {
+    int mirrorPoint = 357;
+    int mirrorPoint2 = 244;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int count = 0;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    //seagulls breaking up
+    
+    for (int row = 228; row < 328; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 229; col < mirrorPoint; col++)
+      {
+        
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    
+    
+    //seagull kissing???????
+    /*
+    for (int row = 228; row < 328; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 229; col < mirrorPoint; col++)
+      {
+        
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+    */
   }
   
   /** copy from the passed fromPic to the
@@ -390,13 +441,13 @@ public class Picture extends SimplePicture
     Picture flower1 = new Picture("flower1.jpg");
     Picture flower2 = new Picture("flower2.jpg");
     this.copy(flower1,0,0);
-    this.copy(flower2,100,0);
-    this.copy(flower1,200,0);
+    this.copy(flower2,100,20);
+    this.copy(flower1,200,30);
     Picture flowerNoBlue = new Picture(flower2);
     flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(flower2,500,0);
+    this.copy(flowerNoBlue,300,40);
+    this.copy(flower1,400,50);
+    this.copy(flower2,500,60);
     this.mirrorVertical();
     this.write("collage.jpg");
   }
