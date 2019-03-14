@@ -397,7 +397,7 @@ public class Picture extends SimplePicture
         
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
+                         [mirrorPoint - col - mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
@@ -434,6 +434,32 @@ public class Picture extends SimplePicture
       }
     }   
   }
+  
+  public void copy(Picture fromPic, 
+                 int startRow, int startCol,
+                 int fSR,      int fSC,
+                 int fER,      int fEC)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = fSR, toRow = startRow; 
+         fromRow < fER &&
+         toRow < toPixels.length; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = fSC, toCol = startCol; 
+           fromCol < fEC &&
+           toCol < toPixels[0].length;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
 
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -443,6 +469,33 @@ public class Picture extends SimplePicture
     this.copy(flower1,0,0);
     this.copy(flower2,100,20);
     this.copy(flower1,200,30);
+    Picture flowerNoBlue = new Picture(flower2);
+    flowerNoBlue.zeroBlue();
+    this.copy(flowerNoBlue,300,40);
+    this.copy(flower1,400,50);
+    this.copy(flower2,500,60);
+    this.mirrorVertical();
+    this.write("collage.jpg");
+  }
+  
+  public void myCollage()
+  {
+    Picture flower1 = new Picture("seagull.jpg");
+    Picture flower2 = new Picture("swam.jpg");
+    Picture flower3 = new Picture("morocco.jpg");
+    this.copy(flower1,0,0,64,301,121,391);
+    this.copy(flower2,100,20,64,301,121,391);
+    this.copy(flower3,200,30,64,301,121,391);
+    
+    
+    
+    
+    /**
+     * on this!!!!!!
+     * 
+     * 
+     * 
+     */
     Picture flowerNoBlue = new Picture(flower2);
     flowerNoBlue.zeroBlue();
     this.copy(flowerNoBlue,300,40);
