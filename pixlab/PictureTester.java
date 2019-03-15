@@ -91,9 +91,9 @@ public class PictureTester
   
   public static void testCopy()
   {
-    Picture canvas = new Picture("640x480.jpg");
-    Picture swan = new Picture("swan.jpg");
-    canvas.copy(swan, 0, 0, 47, 72, 289, 392);
+    Picture canvas = new Picture("beach.jpg");
+    Picture swan = new Picture("snowman.jpg");
+    canvas.copy(swan, 10,10,60,160,180,230);
     canvas.explore();
   }
   
@@ -209,8 +209,9 @@ public class PictureTester
     //  testMirrorArms();
     //  testMirrorGull();
     //  testCollage();
-    testCopy();
-    //testEdgeDetection();
+    //  testCopy();
+    //      testMyCollage();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

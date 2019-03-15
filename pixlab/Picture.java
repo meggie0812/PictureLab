@@ -480,27 +480,26 @@ public class Picture extends SimplePicture
   
   public void myCollage()
   {
-    Picture flower1 = new Picture("seagull.jpg");
-    Picture flower2 = new Picture("swam.jpg");
-    Picture flower3 = new Picture("morocco.jpg");
-    this.copy(flower1,0,0,64,301,121,391);
-    this.copy(flower2,100,20,64,301,121,391);
-    this.copy(flower3,200,30,64,301,121,391);
+    Picture gull = new Picture("seagull.jpg");
+    Picture swam = new Picture("swam.jpg");
+    Picture morocco = new Picture("morocco.jpg");
     
+    this.copy(gull,0,0,229,232,329,332);
+    this.copy(swam,100,0,63,300,200,396);
+    this.copy(morocco,200,0,67,301,167,400);
+    
+    Picture moroccoNoBlue = new Picture(morocco);
+    moroccoNoBlue.zeroBlue();
     
     
     
     /**
-     * on this!!!!!!
-     * 
-     * 
-     * 
+     * 63,300,200,396
      */
-    Picture flowerNoBlue = new Picture(flower2);
-    flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,40);
-    this.copy(flower1,400,50);
-    this.copy(flower2,500,60);
+    
+    this.copy(moroccoNoBlue,300,0,67,301,167,400);
+    this.copy(gull,400,0,229,232,329,332);
+    //this.copy(swam,200,100,63,300,200,396);
     this.mirrorVertical();
     this.write("collage.jpg");
   }
@@ -522,6 +521,26 @@ public class Picture extends SimplePicture
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
+        rightColor = rightPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > 
+            edgeDist)
+          leftPixel.setColor(Color.BLACK);
+        else
+          leftPixel.setColor(Color.WHITE);
+      }
+    }
+    /**
+     * modify this loop to make it compare up and down
+     * 
+     * 
+     */
+    for (int row = 0; row < pixels.length; row++) //change this
+    {
+      for (int col = 0; 
+           col < pixels[0].length-1; col++) // change this
+      {
+        leftPixel = pixels[row][col]; //change this
+        rightPixel = pixels[row][col+1]; //change this
         rightColor = rightPixel.getColor();
         if (leftPixel.colorDistance(rightColor) > 
             edgeDist)
